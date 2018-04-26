@@ -7,6 +7,7 @@
 Add the `-w` switch to any command to watch for changes.
 
 ```
+kubectl get nodes
 kubectl get pods -o wide
 kubectl get rs -o wide
 kubectl get svc kuard
