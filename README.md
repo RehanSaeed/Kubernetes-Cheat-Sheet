@@ -4,15 +4,43 @@
 
 ## Get Commands
 
-Add the `-w` switch to any command to watch for changes.
-
 ```
 kubectl get nodes
-kubectl get pods -o wide
-kubectl get rs -o wide
+kubectl get pods
+kubectl get rs
 kubectl get svc kuard
-kubectl get endpoints kuard -o wide
+kubectl get endpoints kuard
 ```
+
+Additional switches that can be added to the above commands:
+
+- `-o wide` - Show more information.
+- `-w` - watch for changes.
+
+## Describe Command
+
+```
+kubectl describe nodes [id]
+kubectl describe pods [id]
+kubectl describe rs [id]
+kubectl describe svc kuard [id]
+kubectl describe endpoints kuard [id]
+```
+
+## Delete Command
+
+
+```
+kubectl delete nodes [id]
+kubectl delete pods [id]
+kubectl delete rs [id]
+kubectl delete svc kuard [id]
+kubectl delete endpoints kuard [id]
+```
+
+## Create vs Apply
+
+`kubectl create` can be used to create new resources while `kubectl apply` inserts or updates resources while maintaining any manual changes made like scaling pods.
 
 ## Create Pod
 
