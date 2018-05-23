@@ -62,3 +62,15 @@ kubectl apply -f kuard-deployment.yml
 kubectl expose deployment kuard --port 8080 --target-port=8080 -o yaml --dry-run > kuard-service.yml
 kubectl apply -f kuard-service.yml
 ```
+
+## Export YAML for New Pod
+
+```
+kubectl run my-cool-app —-image=me/my-cool-app:v1 -o yaml --dry-run > my-cool-app.yaml
+```
+
+## Export YAML for Existing Object
+
+```
+kubectl get deployment my-cool-app -o yaml --export > my-cool-app.yaml
+```
