@@ -29,7 +29,6 @@ kubectl describe endpoints kuard [id]
 
 ## Delete Command
 
-
 ```
 kubectl delete nodes [id]
 kubectl delete pods [id]
@@ -73,4 +72,18 @@ kubectl run my-cool-app —-image=me/my-cool-app:v1 -o yaml --dry-run > my-cool-
 
 ```
 kubectl get deployment my-cool-app -o yaml --export > my-cool-app.yaml
+```
+
+## Get Logs
+
+```
+kubectl logs -l app=kuard
+```
+
+You can also install and use [kail](https://github.com/boz/kail).
+
+## Port Forward
+
+```
+kubectl port-forward deployment/kuard 8080:8080
 ```
