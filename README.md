@@ -5,6 +5,7 @@
 ## Get Commands
 
 ```
+kubectl get all
 kubectl get nodes
 kubectl get pods
 kubectl get rs
@@ -40,6 +41,8 @@ kubectl delete endpoints kuard [id]
 ## Create vs Apply
 
 `kubectl create` can be used to create new resources while `kubectl apply` inserts or updates resources while maintaining any manual changes made like scaling pods.
+
+- `--record` - Add the current command as an annotation to the resource.
 
 ## Create Pod
 
