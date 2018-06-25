@@ -6,11 +6,22 @@
 
 ```
 kubectl get all
+kubectl get namespaces
 kubectl get nodes
 kubectl get pods
 kubectl get rs
 kubectl get svc kuard
 kubectl get endpoints kuard
+```
+
+## Namespaces
+
+- `--namespace` - Get a resource for a specific namespace.
+
+You can set the default namespace for the current context like so:
+
+```
+kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
 ```
 
 Additional switches that can be added to the above commands:
@@ -89,4 +100,29 @@ You can also install and use [kail](https://github.com/boz/kail).
 
 ```
 kubectl port-forward deployment/kuard 8080:8080
+```
+
+## Deployment Example
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: my-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
 ```
