@@ -7,6 +7,7 @@
 ```
 kubectl get all
 kubectl get namespaces
+kubectl get configmaps
 kubectl get nodes
 kubectl get pods
 kubectl get rs
@@ -28,6 +29,13 @@ Additional switches that can be added to the above commands:
 
 - `-o wide` - Show more information.
 - `-w` - watch for changes.
+
+## Labels
+
+```
+kubectl get pods -l environment=production,tier!=frontend
+kubectl get pods -l 'environment in (production,test),tier notin (frontend,backend)'
+```
 
 ## Describe Command
 
@@ -102,6 +110,24 @@ You can also install and use [kail](https://github.com/boz/kail).
 kubectl port-forward deployment/kuard 8080:8080
 ```
 
+## Pod Example
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cuda-test
+spec:
+  containers:
+    - name: cuda-test
+      image: "k8s.gcr.io/cuda-vector-add:v0.1"
+      resources:
+        limits:
+          nvidia.com/gpu: 1
+  nodeSelector:
+    accelerator: nvidia-tesla-p100
+ ```
+
 ## Deployment Example
 
 ```
@@ -110,6 +136,10 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   namespace: my-namespace
+  "labels": {
+    "key1" : "value1",
+    "key2" : "value2"
+  }
 spec:
   replicas: 3
   selector:
