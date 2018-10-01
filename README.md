@@ -2,6 +2,18 @@
 
  A cheat sheet for Kubernetes commands.
 
+## Kubectl Alias
+
+Linux
+```
+alias k=kubectl
+```
+
+Windows
+```
+Set-Alias -Name k -Value kubectl
+```
+
 ## Get Commands
 
 ```
