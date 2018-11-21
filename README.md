@@ -170,3 +170,10 @@ spec:
         ports:
         - containerPort: 80
 ```
+
+# Azure Kubernetes Service
+
+## Get Credentials
+```
+az aks get-credentials --resource-group <Resource Group Name> --name <AKS Name>
+```
