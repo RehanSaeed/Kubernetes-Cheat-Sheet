@@ -155,9 +155,9 @@ kubectl get deployment my-cool-app -o yaml --export > my-cool-app.yaml
 kubectl logs -l app=kuard
 ```
 
-- Get logs for previous container that has crashed.
+- Get logs for previously terminated container.
 ```
-kubectl logs counter --previous
+kubectl logs POD_NAME --previous
 ```
 
 You can also install and use [kail](https://github.com/boz/kail).
