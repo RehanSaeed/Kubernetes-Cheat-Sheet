@@ -14,6 +14,40 @@ Windows
 Set-Alias -Name k -Value kubectl
 ```
 
+## Cluser Info
+
+- Get clusters
+```
+kubectl config get-clusters
+NAME
+docker-for-desktop-cluster
+foo
+```
+
+- Get cluster info.
+```
+kubectl cluster-info
+Kubernetes master is running at https://172.17.0.58:8443
+```
+
+## Contexts
+
+A context is a cluster, namespace and user.
+
+- Get a list of contexts.
+```
+kubectl config get-contexts
+CURRENT   NAME                 CLUSTER                      AUTHINFO             NAMESPACE
+          docker-for-desktop   docker-for-desktop-cluster   docker-for-desktop
+*         foo                  foo                          foo                  bar
+```
+
+- Get the current context.
+```
+kubectl config current-context
+foo
+```
+
 ## Get Commands
 
 ```
@@ -44,6 +78,12 @@ Additional switches that can be added to the above commands:
 
 ## Labels
 
+- Get pods showing labels.
+```
+kubectl get pods --show-labels
+```
+
+- Get pods by label.
 ```
 kubectl get pods -l environment=production,tier!=frontend
 kubectl get pods -l 'environment in (production,test),tier notin (frontend,backend)'
@@ -108,10 +148,16 @@ kubectl run my-cool-app —-image=me/my-cool-app:v1 -o yaml --dry-run > my-cool-
 kubectl get deployment my-cool-app -o yaml --export > my-cool-app.yaml
 ```
 
-## Get Logs
+## Logs
 
+- Get logs.
 ```
 kubectl logs -l app=kuard
+```
+
+- Get logs for previous container that has crashed.
+```
+kubectl logs counter --previous
 ```
 
 You can also install and use [kail](https://github.com/boz/kail).
@@ -120,6 +166,47 @@ You can also install and use [kail](https://github.com/boz/kail).
 
 ```
 kubectl port-forward deployment/kuard 8080:8080
+```
+
+## Scaling
+
+- Update replicas.
+```
+kubectl scale deployment nginx-deployment --replicas=10
+```
+
+## Autoscaling
+
+- Set autoscaling config.
+```
+kubectl autoscale deployment nginx-deployment --min=10 --max=15 --cpu-percent=80
+```
+
+## Rollout
+
+- Get rollout status.
+```
+kubectl rollout status deployment/nginx-deployment
+Waiting for rollout to finish: 2 out of 3 new replicas have been updated...
+deployment "nginx-deployment" successfully rolled out
+```
+
+- Get rollout history.
+```
+kubectl rollout history deployment/nginx-deployment
+kubectl rollout history deployment/nginx-deployment --revision=2
+```
+
+- Undo a rollout.
+```
+kubectl rollout undo deployment/nginx-deployment
+kubectl rollout undo deployment/nginx-deployment --to-revision=2
+```
+
+- Pause/resume a rollout
+```
+kubectl rollout pause deployment/nginx-deployment
+kubectl rollout resume deploy/nginx-deployment
 ```
 
 ## Pod Example
@@ -169,6 +256,23 @@ spec:
         image: nginx:1.7.9
         ports:
         - containerPort: 80
+```
+
+## Dashboard
+
+- Install
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/influxdb.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/grafana.yaml
+```
+
+- Enable proxy
+
+```
+kubectl proxy
 ```
 
 # Azure Kubernetes Service
