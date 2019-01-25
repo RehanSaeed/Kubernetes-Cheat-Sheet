@@ -281,3 +281,8 @@ kubectl proxy
 ```
 az aks get-credentials --resource-group <Resource Group Name> --name <AKS Name>
 ```
+
+## Show Dashboard
+```
+az aks browse --resource-group <Resource Group Name> --name <AKS Name>
+```
