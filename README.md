@@ -283,6 +283,8 @@ az aks get-credentials --resource-group <Resource Group Name> --name <AKS Name>
 ```
 
 ## Show Dashboard
+
+Secure the dashboard like [this](http://blog.cowger.us/2018/07/03/a-read-only-kubernetes-dashboard.html). Then run:
 ```
 az aks browse --resource-group <Resource Group Name> --name <AKS Name>
 ```
