@@ -61,6 +61,11 @@ kubectl get svc kuard
 kubectl get endpoints kuard
 ```
 
+Additional switches that can be added to the above commands:
+
+- `-o wide` - Show more information.
+- `-w` - watch for changes.
+
 ## Namespaces
 
 - `--namespace` - Get a resource for a specific namespace.
@@ -70,11 +75,6 @@ You can set the default namespace for the current context like so:
 ```
 kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
 ```
-
-Additional switches that can be added to the above commands:
-
-- `-o wide` - Show more information.
-- `-w` - watch for changes.
 
 ## Labels
 
@@ -158,6 +158,16 @@ kubectl logs -l app=kuard
 - Get logs for previously terminated container.
 ```
 kubectl logs POD_NAME --previous
+```
+
+- Watch logs in real time.
+```
+kubectl attach POD_NAME
+```
+
+- Copy files out of pod (Requires `tar` binary in container).
+```
+kubectl cp POD_NAME:/var/log .
 ```
 
 You can also install and use [kail](https://github.com/boz/kail).
