@@ -292,6 +292,8 @@ kubectl proxy
 
 # Azure Kubernetes Service
 
+[List of az aks commands](https://docs.microsoft.com/en-us/cli/azure/aks?view=azure-cli-latest)
+
 ## Get Credentials
 ```
 az aks get-credentials --resource-group <Resource Group Name> --name <AKS Name>
