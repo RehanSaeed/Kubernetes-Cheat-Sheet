@@ -303,3 +303,10 @@ Secure the dashboard like [this](http://blog.cowger.us/2018/07/03/a-read-only-ku
 ```
 az aks browse --resource-group <Resource Group Name> --name <AKS Name>
 ```
+
+## Upgrade
+
+Get updates
+```
+az aks get-upgrades --resource-group <Resource Group Name> --name <AKS Name>
+```
