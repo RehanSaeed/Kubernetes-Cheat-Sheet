@@ -114,6 +114,11 @@ kubectl delete svc kuard [id]
 kubectl delete endpoints kuard [id]
 ```
 
+Force a deletion of a pod without waiting for it to gracefully shut down
+```
+kubectl delete pod-name --grace-period=0 --force
+```
+
 ## Create vs Apply
 
 `kubectl create` can be used to create new resources while `kubectl apply` inserts or updates resources while maintaining any manual changes made like scaling pods.
@@ -274,15 +279,6 @@ spec:
 ```
 
 ## Dashboard
-
-- Install
-
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/influxdb.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/heapster.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/heapster/master/deploy/kube-config/influxdb/grafana.yaml
-```
 
 - Enable proxy
 
