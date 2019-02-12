@@ -69,7 +69,7 @@ kubectl get endpoints kuard
 Additional switches that can be added to the above commands:
 
 - `-o wide` - Show more information.
-- `-w` - watch for changes.
+- `--watch` or `-w` - watch for changes.
 
 ## Namespaces
 
@@ -124,6 +124,7 @@ kubectl delete pod-name --grace-period=0 --force
 `kubectl create` can be used to create new resources while `kubectl apply` inserts or updates resources while maintaining any manual changes made like scaling pods.
 
 - `--record` - Add the current command as an annotation to the resource.
+- `--recursive` - Recursively look for yaml in the specified directory.
 
 ## Create Pod
 
