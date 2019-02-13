@@ -37,6 +37,8 @@ A context is a cluster, namespace and user.
 - Get a list of contexts.
 ```
 kubectl config get-contexts
+```
+```
 CURRENT   NAME                 CLUSTER                      AUTHINFO             NAMESPACE
           docker-desktop       docker-desktop               docker-desktop
 *         foo                  foo                          foo                  bar
@@ -51,6 +53,11 @@ foo
 - Switch current context.
 ```
 kubectl config use-conext docker-desktop
+```
+
+- Set default namesapce
+```
+kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
 ```
 
 ## Get Commands
