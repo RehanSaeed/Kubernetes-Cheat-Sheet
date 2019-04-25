@@ -136,34 +136,34 @@ kubectl delete pod-name --grace-period=0 --force
 ## Create Pod
 
 ```
-kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 -o yaml --dry-run > kuard-pod.yml
+kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 --output yaml --export --dry-run > kuard-pod.yml
 kubectl apply -f kuard-pod.yml
 ```
 
 ## Create Deployment
 
 ```
-kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 -o yaml --dry-run > kuard-deployment.yml
+kubectl run kuard --image=gcr.io/kuar-demo/kuard-amd64:1 --output yaml --export --dry-run > kuard-deployment.yml
 kubectl apply -f kuard-deployment.yml
 ```
 
 ## Create Service
 
 ```
-kubectl expose deployment kuard --port 8080 --target-port=8080 -o yaml --dry-run > kuard-service.yml
+kubectl expose deployment kuard --port 8080 --target-port=8080 --output yaml --export --dry-run > kuard-service.yml
 kubectl apply -f kuard-service.yml
 ```
 
 ## Export YAML for New Pod
 
 ```
-kubectl run my-cool-app —-image=me/my-cool-app:v1 -o yaml --dry-run > my-cool-app.yaml
+kubectl run my-cool-app —-image=me/my-cool-app:v1 --output yaml --export --dry-run > my-cool-app.yaml
 ```
 
 ## Export YAML for Existing Object
 
 ```
-kubectl get deployment my-cool-app -o yaml --export > my-cool-app.yaml
+kubectl get deployment my-cool-app --output yaml --export > my-cool-app.yaml
 ```
 
 ## Logs
