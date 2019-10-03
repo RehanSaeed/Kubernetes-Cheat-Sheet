@@ -14,7 +14,7 @@ Windows
 Set-Alias -Name k -Value kubectl
 ```
 
-## Cluser Info
+## Cluster Info
 
 - Get clusters
 ```
@@ -60,6 +60,8 @@ kubectl config use-conext docker-desktop
 kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
 ```
 
+To switch between contexts, you can also install and use [kubectx](https://github.com/ahmetb/kubectx).
+
 ## Get Commands
 
 ```
@@ -87,6 +89,8 @@ You can set the default namespace for the current context like so:
 ```
 kubectl config set-context $(kubectl config current-context) --namespace=my-namespace
 ```
+
+To switch namespaces, you can also install and use [kubens](https://github.com/ahmetb/kubectx/blob/master/kubens).
 
 ## Labels
 
