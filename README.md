@@ -52,7 +52,7 @@ foo
 
 - Switch current context.
 ```
-kubectl config use-conext docker-desktop
+kubectl config use-context docker-desktop
 ```
 
 - Set default namesapce
